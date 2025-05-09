@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script to change localhost and facebook.com IP resolution
+
+# Sauvegarde du fichier original
+cp /etc/hosts /etc/hosts.bak
+
+# Supprimer les anciennes lignes (si présentes)
+sed -i '/localhost/d' /etc/hosts
+sed -i '/facebook.com/d' /etc/hosts
+
+# Ajouter les nouvelles résolutions
+echo "127.0.0.2 localhost" >> /etc/hosts
+echo "8.8.8.8 facebook.com" >> /etc/hosts
