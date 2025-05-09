@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Affiche les ports TCP/UDP en écoute avec PID et nom du programme
+# Affiche tous les ports TCP et UDP en écoute avec PID et nom du programme
 
-sudo ss -tulnpe
+sudo netstat -tulnp
