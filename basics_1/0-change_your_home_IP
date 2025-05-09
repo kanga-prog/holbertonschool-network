@@ -1,13 +1,24 @@
 #!/bin/bash
-# Script to change localhost and facebook.com IP resolution
+# Script that modifies the /etc/hosts file to change the IP resolution of localhost and facebook.com
 
-# Sauvegarde du fichier original
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Vérifie que le script est exécuté avec les privilèges root
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Ce script doit être exécuté en tant que root." >&2
+  exit 1
+fi
+
+# Sauvegarde de /etc/hosts avant modification
 cp /etc/hosts /etc/hosts.bak
 
-# Supprimer les anciennes lignes (si présentes)
-sed -i '/localhost/d' /etc/hosts
-sed -i '/facebook.com/d' /etc/hosts
+# Suppression des entrées existantes de localhost et facebook.com
+sed -i '/\slocalhost$/d' /etc/hosts
+sed -i '/\sfacebook\.com$/d' /etc/hosts
 
-# Ajouter les nouvelles résolutions
+# Ajout des nouvelles lignes
 echo "127.0.0.2 localhost" >> /etc/hosts
 echo "8.8.8.8 facebook.com" >> /etc/hosts
+
+echo "Modifications appliquées avec succès."
