@@ -1,5 +1,3 @@
-#!/bin/bash
-# Script to show all attached IPv4 IPs
-
-# Afficher les adresses IP attachées à la machine avec cat -e pour afficher le $
-hostname -I | tr ' ' '\n' | cat -e
+#!/usr/bin/env bash
+# Show all ipv4 currently use
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
