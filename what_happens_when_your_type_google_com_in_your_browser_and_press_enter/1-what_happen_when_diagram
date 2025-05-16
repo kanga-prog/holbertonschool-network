@@ -1,0 +1,19 @@
+Browser
+   ↓
+DNS Server → IP Address
+   ↓
+Firewall
+   ↓
+Load Balancer
+   ↓
+Web Server
+   ↓
+Application Server
+   ↓
+Database
+   ↑
+Application Server
+   ↑
+Web Server
+   ↑
+Browser (Web Page Rendered)
