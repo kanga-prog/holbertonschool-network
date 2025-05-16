@@ -1,0 +1,45 @@
+What really happens when you type " https://www.google.com " and hit enter
+We all do it every day, sometimes without even thinking about it: open your browser, type an address like https://www.google.com, and press Enter. A seemingly simple, banal action, but one that actually triggers a series of complex and fascinating operations. Between network layers, digital security, load balancing, and data exchange, this innocuous action activates a veritable invisible choreography, essential to the functioning of the Web as we know it.
+
+So what's really going on behind the scenes? Let's try to follow the journey.
+
+From a name to an address: DNS resolution
+It all starts with a question: how do you go from a domain name—in this case www.google.com, a domain name—to a machine-readable address? Because the internet doesn't run on words, but on IP addresses. The browser then queries several levels of memory—its own cache, the operating system's cache, or a configured DNS server (often the operator's or Google's own)—to find out which IP address corresponds to this name.
+
+This step, called DNS resolution , is essential: it is what will allow the request to reach its destination.
+
+A connection that is established, packet after packet
+Once the IP address is obtained, the browser can attempt to connect to the server. But again, it's not as simple as a "phone call": a stable network connection via TCP/IP protocol must first be established .
+
+This connection relies on a well-established mechanism: the TCP handshake , or digital handshake. In three steps (SYN, SYN-ACK, ACK), the two machines—your computer and the remote server—agree to establish a reliable communication channel, where data arrives in the correct order and without loss.
+
+Securing the exchange: HTTPS negotiation
+But since this is an HTTPS address , we can't just use a simple TCP connection. It needs to be encrypted. This is where the TLS protocol (formerly SSL) comes in, making the exchange more secure.
+
+The browser and server then exchange a series of information to negotiate encryption parameters. The server sends a digital certificate , proving its identity and containing a public key. If the browser deems this certificate reliable (signed by a recognized authority, valid, not expired, etc.), it generates a session key that it encrypts using the server's public key. The latter, thanks to its private key, can decrypt it.
+
+Once this process is complete, all communication is end-to-end encrypted . The user can now browse without fear of their data being intercepted.
+
+Between firewalls and load balancing
+The request does not travel alone: ​​on its way, it passes through different network devices, including firewalls . These devices filter incoming and outgoing packets, according to precise rules, to block suspicious or unauthorized connections.
+
+And when it reaches Google's servers, the request doesn't land directly on a single machine. It's first processed by a load balancer . This analyzes the current server load and redirects the request to the one that's best able to respond quickly.
+
+This dynamic distribution allows Google—and other major web players—to ensure high availability, even during massive traffic.
+
+Web, application and database servers: server-side intelligence
+The request is then handled by a web server —often software like Nginx or Apache—which identifies the nature of the request: do we want a static page? Dynamic content? A JavaScript file? Depending on the case, it forwards it to an application server that will execute more advanced logic: reading cookies, processing the user session, validating parameters, etc.
+
+Often, this logic involves consulting a database . Whether it's MySQL, PostgreSQL, or a NoSQL system like MongoDB, the server then queries tables or collections to retrieve the requested information, such as a search results page.
+
+Return to sender: the server's response
+Once the response is generated, it follows the reverse path. It is sent back via the secure channel, joined by other elements (style sheets, images, scripts) that the browser downloads in parallel.
+
+This is where the browser 's work begins , interpreting the HTML code, applying CSS styles, executing the JavaScript, and displaying a seemingly "immediate" page to the user.
+
+In reality, this page is the result of dozens of technical steps, spread over a few hundred milliseconds — a feat of modern engineering.
+
+What it says about the digital world
+This short digital journey reveals how each click relies on a global infrastructure , mixing networks, security, software, and hardware. But it also reminds us that, for the web to work, constant cooperation between machines and humans is necessary: ​​network engineers, backend developers, security specialists, system administrators, etc.
+
+Understanding this journey means better understanding what lies behind our daily practices. And it is, in a way, a form of digital literacy: the ability to understand, use, and create in a connected world.
